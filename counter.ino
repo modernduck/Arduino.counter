@@ -32,15 +32,24 @@ void loop() {
   
   //แสดง tidTimer()
   lcd.setCursor(0,1);
-  //tidTimer หารสองได้ เศษ 0 แปลว่าเป็นเลขคู่
-  if(tidTimer % 2 == 0)
-  {
-    tone(10, 50);
-  }else
-  {
-    //เป็นเลขคี่
+  //ถ้า counter > 0 ถึงจะร้องติ๊ดๆ
+  if( counter > 0) {
+    //tidTimer หารสองได้ เศษ 0 แปลว่าเป็นเลขคู่
+    if(tidTimer % 2 == 0)
+    {
+      tone(10, 50);
+    }else
+    {
+      //เป็นเลขคี่
+      noTone(10);
+    }
+  }else if( counter == 0){
+    tone(10, 500);
+  }else {
     noTone(10);
   }
+
+  
   lcd.print(tidTimer);
   
    
